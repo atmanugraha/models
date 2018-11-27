@@ -29,7 +29,7 @@ slim = tf.contrib.slim
 
 _FILE_PATTERN = 'marco_%s_*.tfrecord'
 
-SPLITS_TO_SIZES = {'train': 90, 'validation': 10}
+SPLITS_TO_SIZES = {'train': 225, 'validation': 25}
 
 _NUM_CLASSES = 4
 

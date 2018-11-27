@@ -419,7 +419,7 @@ def main(_):
     ######################
     dataset = dataset_factory.get_dataset(
         FLAGS.dataset_name, FLAGS.dataset_split_name, FLAGS.dataset_dir)
-    print("### dataset", dataset.num_samples)
+    print("### dataset num_samples : ", dataset.num_samples)
 
     ######################
     # Select the network #
