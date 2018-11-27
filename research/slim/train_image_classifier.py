@@ -25,6 +25,8 @@ from deployment import model_deploy
 from nets import nets_factory
 from preprocessing import preprocessing_factory
 
+import time
+
 slim = tf.contrib.slim
 
 tf.app.flags.DEFINE_string(
@@ -417,6 +419,7 @@ def main(_):
     ######################
     dataset = dataset_factory.get_dataset(
         FLAGS.dataset_name, FLAGS.dataset_split_name, FLAGS.dataset_dir)
+    print("### dataset" + dataset.num_samples)
 
     ######################
     # Select the network #
@@ -572,6 +575,7 @@ def main(_):
     ###########################
     # Kicks off the training. #
     ###########################
+    startTime = time.time()
     slim.learning.train(
         train_tensor,
         logdir=FLAGS.train_dir,
@@ -584,7 +588,11 @@ def main(_):
         save_summaries_secs=FLAGS.save_summaries_secs,
         save_interval_secs=FLAGS.save_interval_secs,
         sync_optimizer=optimizer if FLAGS.sync_replicas else None)
-
+    endTime = time.time()
+    runningTime = endTime - startTime
+    print("########################################")
+    print("This process took " + runningTime + " seconds.")
+    print("########################################")
 
 if __name__ == '__main__':
   tf.app.run()
