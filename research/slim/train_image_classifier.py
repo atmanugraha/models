@@ -419,7 +419,7 @@ def main(_):
     ######################
     dataset = dataset_factory.get_dataset(
         FLAGS.dataset_name, FLAGS.dataset_split_name, FLAGS.dataset_dir)
-    print("### dataset" + dataset.num_samples)
+    print("### dataset", dataset.num_samples)
 
     ######################
     # Select the network #
@@ -591,7 +591,7 @@ def main(_):
     endTime = time.time()
     runningTime = endTime - startTime
     print("########################################")
-    print("This process took " + runningTime + " seconds.")
+    print("This process took ", runningTime, " seconds.")
     print("########################################")
 
 if __name__ == '__main__':
