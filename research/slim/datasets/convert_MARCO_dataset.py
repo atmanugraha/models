@@ -37,19 +37,17 @@ import tensorflow as tf
 
 from datasets import dataset_utils
 
-FLAGS = None
-
 # The URL where the Flowers data can be downloaded.
 # _DATA_URL = 'http://download.tensorflow.org/example_images/flower_photos.tgz'
 
 # The number of images in the validation set.
-_NUM_VALIDATION = FLAGS.num_validation
+_NUM_VALIDATION = 0
 
 # Seed for repeatability.
 _RANDOM_SEED = 0
 
 # The number of shards per dataset split.
-_NUM_SHARDS = FLAGS.num_shard
+_NUM_SHARDS = 0
 
 
 class ImageReader(object):
@@ -214,6 +212,9 @@ def run(dataset_dir):
   print('\nFinished converting the Flowers dataset!')
 
 def main(_):
+  _NUM_VALIDATION = FLAGS.num_validation
+  _RANDOM_SEED = FLAGS.random_seed
+  _NUM_SHARDS = FLAGS.num_shard
   run(FLAGS.dataset_dir)
 
 if __name__ == '__main__':
