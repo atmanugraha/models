@@ -29,6 +29,7 @@ from __future__ import print_function
 import os
 import sys
 import tarfile
+import argparse
 
 import numpy as np
 from six.moves import cPickle
@@ -190,3 +191,17 @@ def run(dataset_dir):
 
   #_clean_up_temporary_files(dataset_dir)
   print('\nFinished converting the MARCO dataset!')
+
+def main(_):
+  run(FLAGS.dataset_dir)
+
+if __name__ == '__main__':
+  parser = argparse.ArgumentParser()
+  parser.add_argument(
+    '--dataset_dir',
+    type=str,
+    default='',
+    help='Path to save dataset'
+  )
+  FLAGS, unparsed = parser.parse_known_args()
+  tf.app.run()
