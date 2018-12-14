@@ -99,6 +99,9 @@ def inception_v3_base(inputs,
   with tf.variable_scope(scope, 'InceptionV3', [inputs]):
     with slim.arg_scope([slim.conv2d, slim.max_pool2d, slim.avg_pool2d],
                         stride=1, padding='VALID'):
+      # 599 x 599 x 3
+      end_point = 'Conv2d_1a_3x3'
+      net = slim.conv2d(inputs, depth(16), [3, 3], stride=2, scope=end_point)
       # 299 x 299 x 3
       end_point = 'Conv2d_1a_3x3'
       net = slim.conv2d(inputs, depth(32), [3, 3], stride=2, scope=end_point)
