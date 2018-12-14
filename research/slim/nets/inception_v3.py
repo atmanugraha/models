@@ -104,7 +104,7 @@ def inception_v3_base(inputs,
       net = slim.conv2d(inputs, depth(16), [3, 3], stride=2, scope=end_point)
       # 299 x 299 x 3
       end_point = 'Conv2d_1a_3x3'
-      net = slim.conv2d(inputs, depth(32), [3, 3], stride=2, scope=end_point)
+      net = slim.conv2d(net, depth(32), [3, 3], stride=2, scope=end_point)
       end_points[end_point] = net
       if end_point == final_endpoint: return net, end_points
       # 149 x 149 x 32
