@@ -41,7 +41,7 @@ from datasets import dataset_utils
 # _DATA_URL = 'http://download.tensorflow.org/example_images/flower_photos.tgz'
 
 # The number of images in the validation set.
-_NUM_VALIDATION = 0
+_NUM_VALIDATION = 10000
 
 # Seed for repeatability.
 _RANDOM_SEED = 0
@@ -209,12 +209,12 @@ def run(dataset_dir):
   dataset_utils.write_label_file(labels_to_class_names, dataset_dir)
 
   # _clean_up_temporary_files(dataset_dir)
-  print('\nFinished converting the Flowers dataset!')
+  print('\nFinished converting the MARCO dataset!')
 
 def main(_):
-  _NUM_VALIDATION = FLAGS.num_validation
-  _RANDOM_SEED = FLAGS.random_seed
-  _NUM_SHARDS = FLAGS.num_shard
+  # _NUM_VALIDATION = FLAGS.num_validation
+  # _RANDOM_SEED = FLAGS.random_seed
+  # _NUM_SHARDS = FLAGS.num_shard
   run(FLAGS.dataset_dir)
 
 if __name__ == '__main__':
