@@ -70,7 +70,7 @@ class ImageReader(object):
     return image
 
 
-def _get_filenames_and_classes(dataset_dir):
+def _get_filenames_and_classes(image_dir):
   """Returns a list of filenames and inferred class names.
 
   Args:
@@ -81,7 +81,7 @@ def _get_filenames_and_classes(dataset_dir):
     A list of image file paths, relative to `dataset_dir` and the list of
     subdirectories, representing class names.
   """
-  marco_root = os.path.join(dataset_dir, 'marco_photos')
+  marco_root = os.path.join(image_dir)
   directories = []
   class_names = []
   for filename in os.listdir(marco_root):
@@ -175,7 +175,7 @@ def _dataset_exists(dataset_dir):
   return True
 
 
-def run(dataset_dir):
+def run(dataset_dir, image_dir):
   """Runs the download and conversion operation.
 
   Args:
@@ -189,7 +189,7 @@ def run(dataset_dir):
     return
 
   # dataset_utils.download_and_uncompress_tarball(_DATA_URL, dataset_dir)
-  photo_filenames, class_names = _get_filenames_and_classes(dataset_dir)
+  photo_filenames, class_names = _get_filenames_and_classes(image_dir)
   class_names_to_ids = dict(zip(class_names, range(len(class_names))))
 
   # Divide into train and test:
@@ -215,7 +215,7 @@ def main(_):
   # _NUM_VALIDATION = FLAGS.num_validation
   # _RANDOM_SEED = FLAGS.random_seed
   # _NUM_SHARDS = FLAGS.num_shard
-  run(FLAGS.dataset_dir)
+  run(FLAGS.dataset_dir, FLAGS.image_dir)
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
