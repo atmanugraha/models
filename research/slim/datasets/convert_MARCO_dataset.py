@@ -226,6 +226,12 @@ if __name__ == '__main__':
     help='Path to save dataset'
   )
   parser.add_argument(
+    '--image_dir',
+    type=str,
+    default='',
+    help='Image source directory'
+  )
+  parser.add_argument(
     '--num_validation',
     type=int,
     default='100',
