@@ -34,6 +34,7 @@ import sys
 import argparse
 
 import tensorflow as tf
+import time
 
 from datasets import dataset_utils
 
@@ -215,7 +216,9 @@ def main(_):
   # _NUM_VALIDATION = FLAGS.num_validation
   # _RANDOM_SEED = FLAGS.random_seed
   # _NUM_SHARDS = FLAGS.num_shard
+  startTime = time.time()
   run(FLAGS.dataset_dir, FLAGS.image_dir)
+  print("Time taken: %f" % (time.time()-startTime))
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
